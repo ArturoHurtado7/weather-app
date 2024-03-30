@@ -1,5 +1,9 @@
 # weather-app
 
+## prerequisites
+
+- install [docker](https://docs.docker.com/get-docker/)
+
 ## prepare the environment
 
 - create a `.env` file in the root of the project with the following content:
@@ -14,8 +18,8 @@ APP_PORT=3000
 WEATHER_API_KEY=your_api_key
 ```
 
-you can get an api key from [openweathermap](https://home.openweathermap.org/users/sign_up)
-also will will have a file named `.env.example` with the same content you can copy it and rename it to `.env`
+you can get an api key from [openweathermap](https://home.openweathermap.org/users/sign_up),
+also you will have a file named `.env.example` with the same content you can copy it and rename it to `.env`
 
 ## Commands to run the project
 
