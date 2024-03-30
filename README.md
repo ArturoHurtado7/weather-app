@@ -20,3 +20,9 @@ mysql -u root -p
 use weather_app;
 select * from cache;
 ```
+
+- pytest tests:
+
+```bash
+docker-compose run app pytest .
+```

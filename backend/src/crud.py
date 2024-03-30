@@ -8,6 +8,9 @@ from src.constants import CACHE_HOLD_MINUTES
 
 
 def get_cache(db: Session, cache_id: str):
+    """
+    Get cache item from database
+    """
     two_minutes_ago = datetime.datetime.now() - datetime.timedelta(minutes=CACHE_HOLD_MINUTES)
     cache_item = db.query(models.Cache).filter(
         models.Cache.id == cache_id, 
@@ -17,6 +20,9 @@ def get_cache(db: Session, cache_id: str):
 
 
 def upsert_cache(db: Session, cache_id: str, cache: dict):
+    """
+    Upsert cache item in database
+    """
     stmt = insert(models.Cache).values(
         id=cache_id,
         data=cache,

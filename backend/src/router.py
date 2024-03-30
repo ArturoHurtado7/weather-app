@@ -11,6 +11,9 @@ from src.database import SessionLocal
 router = APIRouter()
 
 def get_db():
+    """
+    Get database session
+    """
     db = SessionLocal()
     try:
         yield db
@@ -27,7 +30,9 @@ def get_db():
     },
 )
 async def get_weather(
-    city: str, country: str = Query(..., regex="^[a-z]{2}$"), db: Session = Depends(get_db)
+    city: str = Query(..., min_length=1),
+    country: str = Query(..., pattern="^[a-z]{2}$"), 
+    db: Session = Depends(get_db)
 ):
     """
     Get city weather, from cache database or from weather api
@@ -39,3 +44,12 @@ async def get_weather(
         content = {"error": str(e)}
     return JSONResponse(status_code=status_code, content=content)
 
+@router.get(
+    "/",
+    status_code=status.HTTP_200_OK
+)
+async def health_check():
+    """
+    Health check
+    """
+    return {"status": "ok"}

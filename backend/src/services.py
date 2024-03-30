@@ -14,8 +14,8 @@ def weather_service(city, country, db) -> tuple[int, dict]:
     cache = get_cache(db, cache_id)
     if cache:
         response = dict(cache.data) # type: ignore
-        print("Data from cache", flush=True)
-        return 200, response
+        response["from_cache"] = True # type: ignore
+        return 200, response 
 
     # API calls
     status_code, current_data = current_weather(city, country)
@@ -35,7 +35,7 @@ def weather_service(city, country, db) -> tuple[int, dict]:
     response = general_data(current_data, tz)
     response = response | weather_data(current_data, tz)
     response["forecast"] = [weather_data(item, tz) for item in forecast_data["list"]]
+    response["from_cache"] = False
 
     upsert_cache(db, cache_id, response)
-    print("Data from API", flush=True)
     return status_code, response
