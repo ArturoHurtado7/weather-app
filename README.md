@@ -44,9 +44,7 @@ use weather_app;
 select * from cache;
 ```
 
-- run pytest tests:
-
-to run the tests you can use the following command:
+- to run the pytests tests you can use the following command after running the project:
 
 ```bash
 docker-compose run app pytest .
@@ -60,10 +58,6 @@ docker-compose run app pytest .
 curl -v -L "http://localhost:8000/weather?city=cairo&country=eg"
 ```
 
-- access to the swagger documentation by visiting:
+- [swagger](http://localhost:8000/docs) documentation
 
-[swagger](http://localhost:8000/docs)
-
-- access to the redoc documentation by visiting:
-
-[redoc](http://localhost:8000/redoc)
+- [redoc](http://localhost:8000/redoc) documentation
