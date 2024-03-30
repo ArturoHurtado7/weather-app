@@ -23,15 +23,15 @@ also you will have a file named `.env.example` with the same content you can cop
 
 ## Commands to run the project
 
-- Run the project:
+### Run the project:
 
 ```bash
 docker-compose up --force-recreate --build --remove-orphans -d
 ```
 
-- access the database:
+### Optional commands:
 
-in the mysql container terminal run:
+- to access the database, in the mysql container terminal run:
 
 ```bash
 mysql -u root -p
@@ -52,18 +52,18 @@ to run the tests you can use the following command:
 docker-compose run app pytest .
 ```
 
-- make a request to the api:
+### How to use the api:
 
-to make a request to the api you can use the following command:
+- to make a request to the api you can use the following command:
 
 ```bash
 curl -v -L "http://localhost:8000/weather?city=cairo&country=eg"
 ```
 
-or you can access to the swagger documentation by visiting:
+- access to the swagger documentation by visiting:
 
 [swagger](http://localhost:8000/docs)
 
-or the redoc documentation by visiting:
+- access to the redoc documentation by visiting:
 
-[swagger](http://localhost:8000/redoc)
+[redoc](http://localhost:8000/redoc)
