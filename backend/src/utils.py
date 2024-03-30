@@ -1,5 +1,6 @@
 import datetime
 from datetime import timezone
+from src.constants import COUNTRIES
 
 def general_data(input: dict, tz: datetime.timezone) -> dict:
     """
@@ -7,8 +8,10 @@ def general_data(input: dict, tz: datetime.timezone) -> dict:
     """
     sunrise = datetime.datetime.fromtimestamp(input['sys']['sunrise'], tz=timezone.utc)
     sunset = datetime.datetime.fromtimestamp(input['sys']['sunset'], tz=timezone.utc)
+    country_code = input['sys']['country']
+    country_name = COUNTRIES.get(country_code, country_code)
     general = {
-        "location_name": f"{input['name']}, {input['sys']['country']}",
+        "location_name": f"{input['name']}, {country_name}",
         "geo_coordinates": f"[{input['coord']['lat']}, {input['coord']['lon']}]",
         "sunrise": sunrise.astimezone(tz).strftime("%Y-%m-%d %H:%M:%S"),
         "sunset": sunset.astimezone(tz).strftime("%Y-%m-%d %H:%M:%S"),

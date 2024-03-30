@@ -1,24 +1,13 @@
 # FastAPI
 from fastapi import APIRouter, status, Query, Depends
 from fastapi.responses import JSONResponse
+from sqlalchemy.orm import Session
 
 # Services
 from src.services import weather_service
-
-from sqlalchemy.orm import Session
-from src.database import SessionLocal
+from src.database import get_db
 
 router = APIRouter()
-
-def get_db():
-    """
-    Get database session
-    """
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 @router.get(
     "/weather",

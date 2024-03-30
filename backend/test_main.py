@@ -75,6 +75,13 @@ def test_get_weather_city_country_space():
     response = client.get(url)
     assert response.status_code == 422
 
+def test_get_weather_country_uppercase():
+    city = "bogota"
+    country = "CO"
+    url = f"/weather?city={city}&country={country}"
+    response = client.get(url)
+    assert response.status_code == 422
+
 def test_get_weather_cache():
     city = "barranquilla"
     country = "co"
